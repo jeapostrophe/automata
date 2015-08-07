@@ -7,7 +7,7 @@
                      syntax/parse
                      syntax/id-table
                      racket/dict
-                     unstable/sequence))
+                     racket/sequence))
 
 (define-syntax (dfa stx)
   (syntax-parse
