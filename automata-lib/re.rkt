@@ -4,7 +4,6 @@
          racket/match
          (for-syntax syntax/parse
                      racket/syntax
-                     unstable/syntax
                      racket/base
                      "re-help.rkt"
                      "re-compile.rkt"))
