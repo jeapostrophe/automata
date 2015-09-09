@@ -21,14 +21,19 @@ This package provides macros and functions for writing state machines over @rack
 @(require (for-label automata/machine))
 @interaction-eval[#:eval our-eval (require automata/machine)]
 
-Each of the subsequent macros compile to instances of the machines provided by this module. This is a documented feature of the modules, so these functions should be used to, for example, determine if the machine is currently accepting.
+Each of the subsequent macros compile to instances of the machines
+provided by this module. This is a documented feature of the modules,
+so these functions should be used to, for example, determine if the
+machine is currently accepting.
 
-@defstruct*[machine ([next (any/c . -> . machine?)])]{
- An applicable structure for machines. When the structure is applied, the @racket[next] field is used as the procedure.
+@defproc[(machine? [x any/c])
+         boolean?]{
+Identifies machines.
 }
 
-@defstruct*[(machine-accepting machine) ([next (any/c . -> . machine?)])]{
- A sub-structure of @racket[machine] that is accepting.
+@defproc[(machine-accepting? [x any/c])
+         boolean?]{
+Identifies accepting machines.
 }
 
 @defproc[(machine-accepts? [m machine?] [i (listof any/c)])
