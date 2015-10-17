@@ -31,10 +31,14 @@ machine is currently accepting.
 Identifies machines.
 }
 
+@defproc[(machine [guts any/c] [next (-> any/c machine?)]) machine?]{Constructs a machine.}
+
 @defproc[(machine-accepting? [x any/c])
          boolean?]{
 Identifies accepting machines.
 }
+
+@defproc[(machine-accepting [guts any/c] [next (-> any/c machine?)]) machine?]{Constructs an accepting machine.}
 
 @defproc[(machine-accepts? [m machine?] [i (listof any/c)])
          boolean?]{
