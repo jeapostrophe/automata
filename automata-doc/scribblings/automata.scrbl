@@ -30,7 +30,8 @@ machine is currently accepting.
 Identifies machines.
 }
 
-@defproc[(machine [guts any/c] [next (-> any/c machine?)]) machine?]{Constructs a machine.}
+@defproc[(machine [guts any/c] [next (-> any/c machine?)]) machine?]{Constructs a machine.
+Machines are procedures which, when applied to the next input, return an updated machine.}
 
 @defproc[(machine-accepting? [x any/c])
          boolean?]{
