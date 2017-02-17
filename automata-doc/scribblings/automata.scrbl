@@ -11,7 +11,6 @@
 @title{Automata: Compiling State Machines}
 @author+email["Jay McCarthy" "jay@racket-lang.org"]
 
-@defmodule[automata]
 
 This package provides macros and functions for writing state machines over @racketmodname[racket/match] patterns (as opposed to concrete characters.)
 
