@@ -11,7 +11,6 @@
 @title{Automata: Compiling State Machines}
 @author+email["Jay McCarthy" "jay@racket-lang.org"]
 
-@defmodule[automata]
 
 This package provides macros and functions for writing state machines over @racketmodname[racket/match] patterns (as opposed to concrete characters.)
 
@@ -31,7 +30,8 @@ machine is currently accepting.
 Identifies machines.
 }
 
-@defproc[(machine [guts any/c] [next (-> any/c machine?)]) machine?]{Constructs a machine.}
+@defproc[(machine [guts any/c] [next (-> any/c machine?)]) machine?]{Constructs a machine.
+Machines are procedures which, when applied to the next input, return an updated machine.}
 
 @defproc[(machine-accepting? [x any/c])
          boolean?]{
