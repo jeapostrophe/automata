@@ -23,6 +23,10 @@
  (test-re nullset
           []
           [(list) (list 1)])
+
+ (test-re (union)
+          []
+          [(list) (list 1)])
  
  (test-re "A"
           [(list "A")]
@@ -38,6 +42,18 @@
  (test-re (union 0 1)
           [(list 1)
            (list 0)]
+          [(list)
+           (list 0 1)
+           (list 0 1 1)])
+
+ (test-re (seq)
+          [(list)]
+          [(list 0)
+           (list 0 1)
+           (list 0 1 1)])
+ 
+ (test-re (seq 0)
+          [(list 0)]
           [(list)
            (list 0 1)
            (list 0 1 1)])

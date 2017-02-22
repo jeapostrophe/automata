@@ -30,6 +30,8 @@
    [((~and op star) lhs:expr)
     (quasisyntax/loc stx
       (op #,(re-expand #'lhs)))]
+   [((~and op seq))
+    (re-expand #'epsilon)]
    [((~and op seq) lhs:expr)
     (re-expand #'lhs)]
    [((~and op seq) lhs:expr rhs:expr)
@@ -38,6 +40,8 @@
    [((~and op seq) lhs:expr rest:expr ...)
     (quasisyntax/loc stx
       #,(re-expand #'(op lhs (op rest ...))))]
+   [((~and op union))
+    (re-expand #'nullset)]
    [((~and op union) lhs:expr)
     (re-expand #'lhs)]
    [((~and op union) lhs:expr rhs:expr)
