@@ -40,12 +40,12 @@ Identifies accepting machines.
 
 @defproc[(machine-accepting [guts any/c] [next (-> any/c machine?)]) machine?]{Constructs an accepting machine.}
 
-@defproc[(machine-accepts? [m machine?] [i (listof any/c)])
+@defproc[(machine-accepts? [m machine?] [i stream?])
          boolean?]{
  Returns @racket[#t] if @racket[m] ends in an accepting state after consuming every element of @racket[i].
 }
 
-@defproc[(machine-accepts?/prefix-closed [m machine?] [i (listof any/c)])
+@defproc[(machine-accepts?/prefix-closed [m machine?] [i stream?])
          boolean?]{
  Returns @racket[#t] if @racket[m] stays in an accepting state during the consumption of every element of @racket[i].
 }

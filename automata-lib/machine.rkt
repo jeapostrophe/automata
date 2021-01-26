@@ -1,6 +1,6 @@
 #lang racket/base
 (require racket/contract
-         racket/list)
+         racket/stream)
 
 (struct machine (guts next)
         #:mutable
@@ -108,15 +108,15 @@
   m)
 
 (define (machine-accepts? m evts)
-  (if (empty? evts)
+  (if (stream-empty? evts)
       (machine-accepting? m)
-      (machine-accepts? (m (first evts)) (rest evts))))
+      (machine-accepts? (m (stream-first evts)) (stream-rest evts))))
 (define (machine-accepts?/prefix-closed m evts)
-  (if (empty? evts)
+  (if (stream-empty? evts)
       (machine-accepting? m)
-      (let ([n (m (first evts))])
+      (let ([n (m (stream-first evts))])
         (and (machine-accepting? n)
-             (machine-accepts? n (rest evts))))))
+             (machine-accepts? n (stream-rest evts))))))
 
 (define machine-null
   (machine 'null (λ (input) machine-null)))
@@ -158,8 +158,8 @@
          machine-accepting)
 (provide/contract*
  [machine-explain (machine? . -> . any/c)]
- [machine-accepts? (machine? (listof any/c) . -> . boolean?)]
- [machine-accepts?/prefix-closed (machine? (listof any/c) . -> . boolean?)]
+ [machine-accepts? (machine? stream? . -> . boolean?)]
+ [machine-accepts?/prefix-closed (machine? stream? . -> . boolean?)]
  #;[struct machine ([next (any/c . -> . machine?)])]
  #;[struct (machine-accepting machine) ([next (any/c . -> . machine?)])]
  [machine-null machine?]
